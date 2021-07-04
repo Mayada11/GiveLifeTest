@@ -41,7 +41,6 @@
         "visus": "0.0.1",
         "vivus": "^0.4.6",
         "zone.js": "~0.11.3"
-
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "~0.1102.3",
