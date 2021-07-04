@@ -180,6 +180,10 @@ Backup*/
 UpgradeLog*.XML
 UpgradeLog*.htm
 
+
+/dist
+/tmp
+/out-tsc
 # SQL Server files
 *.mdf
 *.ldf
