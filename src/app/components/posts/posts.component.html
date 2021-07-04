@@ -1,0 +1,73 @@
+<button class="btn btn-outline-danger" id="publichstyle" (click)="openpostform(postform)">Publish Post</button>
+
+<br>
+<br>
+
+
+<app-post></app-post>
+
+<ng-template #postform let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">
+            Write a Post
+        </h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+  
+            <span aria-hidden="true">
+                ×
+            </span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form name="postform" #postform="ngForm" (ngSubmit)="onSubmit(postform)">
+
+            <div class="row">
+                <div class="col-md">
+                    <div class="parent">
+                        <div class="div1">
+                            <textarea class="ele1 form-control" type="text" name="PostMessage" [(ngModel)]="post.PostMessage" form="usrform" rows="5" required>
+                            </textarea>
+                        </div>
+                        <div *ngIf="postform.controls.PostMessage?.touched && postform.controls.PostMessage.errors">
+                            <span *ngIf="postform.controls.PostMessage.errors.required">Post body is required</span>
+                        </div>
+                        <br>
+                        <p class=" mb-0" style="color:#DC3545">NationalID</p>
+                        <div class="div2"><input class="form-control" name="CaseNationalId" [(ngModel)]="post.CaseNationalId" placeholder="case NationalID.." required></div>
+                        <div *ngIf="postform.controls.CaseNationalId?.touched && postform.controls.CaseNationalId.errors">
+
+                            <span *ngIf="postform.controls.CaseNationalId.errors.required">Case National ID is required</span>
+                        </div>
+
+                        <p class=" mb-0" style="color:#DC3545">Required Amount</p>
+                        <div class="div2"><input class="form-control" name="RequiredAmount" [(ngModel)]="post.RequiredAmount" placeholder="Required Amount.." required></div>
+                        <div *ngIf="postform.controls.RequiredAmount?.touched && postform.controls.RequiredAmount.errors">
+
+                            <span *ngIf="postform.controls.RequiredAmount.errors.required">Required Amount of money is required</span>
+                        </div>
+                        <div class="div3">
+                            <p class=" mb-0" style="color:#DC3545">Need Category</p>
+                            <select class="form-control" name="NeedCatogry" [(ngModel)]="post.NeedCatogry" id="pet-select" form="usrform" required>
+                                                   
+                                        <option value="medicine">Medicine</option>
+                                        <option value="cloths">Clothes</option>
+                                        <option value="food">Food</option>
+                            </select></div>
+                        <div *ngIf="postform.controls.NeedCatogry?.touched && postform.controls.NeedCatogry.errors">
+
+                            <span *ngIf="postform.controls.NeedCatogry.errors.required">specify need catogry</span>
+                        </div>
+                        <br>
+                        <div class="alert alert-warning" role="alert" *ngIf=" this.customError.flag">
+                            <span>{{this.customError.message}}</span>
+
+                        </div>
+
+                        <button class="div5 " type=" submit " [disabled]="postform.invalid==true&&this.customError.flag==false">Publish <i>♥</i> </button>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</ng-template>
